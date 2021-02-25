@@ -11,5 +11,10 @@ form {
 
 .recipe {
   margin-bottom: 50px;
+  margin-right: 970px;
   border: 4px solid black;
+}
+
+img {
+  width: 100%;
 }

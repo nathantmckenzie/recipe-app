@@ -3,7 +3,7 @@ import React from "react";
 const Recipe = ({ title, calories, image }) => {
   return (
     <div className="recipe">
-      <div>Title: {title}</div>
+      <h1>Title: {title}</h1>
       <p>Calories: {Math.trunc(calories)}</p>
       <img src={image}></img>
     </div>
