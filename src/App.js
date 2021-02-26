@@ -9,6 +9,7 @@ export default function App() {
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("chicken");
+  const [showIngredients, setShowIngredients] = useState(false);
 
   useEffect(() => {
     console.log(process.env);
@@ -41,14 +42,22 @@ export default function App() {
           Search
         </button>
       </form>
-      {recipes.map((recipe) => (
-        <Recipe
-          key={recipe.recipe.label}
-          title={recipe.recipe.label}
-          calories={recipe.recipe.calories}
-          image={recipe.recipe.image}
-        />
-      ))}
+      {recipes.map(
+        (recipe) => (
+          console.log(recipe),
+          (
+            <Recipe
+              key={recipe.recipe.label}
+              title={recipe.recipe.label}
+              calories={recipe.recipe.calories}
+              image={recipe.recipe.image}
+              ingredients={recipe.recipe.ingredients}
+              showIngredients={showIngredients}
+              setShowIngredients={setShowIngredients}
+            />
+          )
+        )
+      )}
     </div>
   );
 }
