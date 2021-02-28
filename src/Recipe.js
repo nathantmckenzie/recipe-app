@@ -13,7 +13,7 @@ const Recipe = ({
   setCurrentlySelected,
   recipes,
 }) => {
-  function clickHandler(e) {
+  function clickHandler() {
     if (currentlySelected !== title) {
       setCurrentlySelected(title);
     } else {
@@ -23,19 +23,23 @@ const Recipe = ({
     setShowIngredients(!showIngredients);
   }
   return (
-    <div className="recipe" onDoubleClick={clickHandler}>
-      <h1>{title}</h1>
-      <p>Calories: {Math.trunc(calories)}</p>
-      <img src={image}></img>
-      {currentlySelected === title ? (
-        <Ingredients
-          allIngredients={allIngredients}
-          currentlySelected={currentlySelected}
-          key={key}
-          recipes={recipes}
-        />
-      ) : null}
-    </div>
+    <>
+      <div className="recipe" onDoubleClick={clickHandler}>
+        <h1>{title}</h1>
+        <p>Calories: {Math.trunc(calories)}</p>
+        <img src={image}></img>
+      </div>
+      <div id="ingredients-container">
+        {currentlySelected === title ? (
+          <Ingredients
+            allIngredients={allIngredients}
+            currentlySelected={currentlySelected}
+            key={key}
+            recipes={recipes}
+          />
+        ) : null}
+      </div>
+    </>
   );
 };
 export default Recipe;

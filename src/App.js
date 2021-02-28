@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import Recipe from "./Recipe";
+import Slider from "./Slider";
 
 export default function App() {
   const APP_ID = "306c750d";
@@ -11,6 +12,7 @@ export default function App() {
   const [query, setQuery] = useState("chicken");
   const [showIngredients, setShowIngredients] = useState(false);
   const [currentlySelected, setCurrentlySelected] = useState("");
+  const [value, setValue] = useState(1);
 
   useEffect(() => {
     console.log(process.env);
@@ -42,6 +44,7 @@ export default function App() {
         <button className="search=button" type="submit">
           Search
         </button>
+        <Slider value={value} setValue={setValue} />
       </form>
       {console.log("RECIPES", recipes)}
       {recipes.map((recipe) => (
