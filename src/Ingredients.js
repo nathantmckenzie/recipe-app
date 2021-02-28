@@ -1,10 +1,17 @@
 import React from "react";
 
-export default function Ingredients({ ingredients }) {
+export default function Ingredients({
+  allIngredients,
+  currentlySelected,
+  key,
+  recipes,
+}) {
+  console.log("currentlySelected", currentlySelected);
+
   return (
     <div>
-      {ingredients.map((ingredient) => (
-        <li>{ingredient.text}</li>
+      {allIngredients.map((ingredients) => (
+        <li>{ingredients.text}</li>
       ))}
     </div>
   );

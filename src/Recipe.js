@@ -5,19 +5,36 @@ const Recipe = ({
   title,
   calories,
   image,
-  ingredients,
+  allIngredients,
   showIngredients,
   setShowIngredients,
+  key,
+  currentlySelected,
+  setCurrentlySelected,
+  recipes,
 }) => {
+  function clickHandler(e) {
+    if (currentlySelected !== title) {
+      setCurrentlySelected(title);
+    } else {
+      setCurrentlySelected(null);
+    }
+
+    setShowIngredients(!showIngredients);
+  }
   return (
-    <div
-      className="recipe"
-      onDoubleClick={() => setShowIngredients(!showIngredients)}
-    >
-      <h1>Title: {title}</h1>
+    <div className="recipe" onDoubleClick={clickHandler}>
+      <h1>{title}</h1>
       <p>Calories: {Math.trunc(calories)}</p>
       <img src={image}></img>
-      {showIngredients ? <Ingredients ingredients={ingredients} /> : null}
+      {currentlySelected === title ? (
+        <Ingredients
+          allIngredients={allIngredients}
+          currentlySelected={currentlySelected}
+          key={key}
+          recipes={recipes}
+        />
+      ) : null}
     </div>
   );
 };
